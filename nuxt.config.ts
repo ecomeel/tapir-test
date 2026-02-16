@@ -7,7 +7,13 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: "Tapir test "
+      title: "Tapir test",
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap'
+        }
+      ]
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
