@@ -25,6 +25,7 @@ import { TextButton } from '~/shared/ui/TextButton';
     font-size: 64px;
     line-height: 1.1em;
     font-weight: 500;
+    text-transform: uppercase;
   }
 
   @media (max-width: 767px) {

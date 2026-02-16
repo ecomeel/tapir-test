@@ -19,6 +19,7 @@
     v-else
     type="button"
     :class="buttonClasses"
+    :disabled="props.disabled"
   >
     {{ props.label }}
   </button>
@@ -31,12 +32,13 @@ import { computed } from 'vue'
 const props = withDefaults(defineProps<TextButtonProps>(), {
   colorToken: 'transparent',
   bordered: false,
+  disabled: false,
 })
 
 const buttonClasses = computed(() => [
   'button',
   `button_${props.colorToken}`,
-  { 'button_bordered': props.bordered }
+  { 'button_bordered': props.bordered, 'button_disabled': props.disabled }
 ])
 </script>
 
@@ -52,6 +54,10 @@ const buttonClasses = computed(() => [
 
   &:hover {
     opacity: .7;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
   }
 
   &_red {
