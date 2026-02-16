@@ -29,7 +29,6 @@ import navigation from '../model/navigation';
   }
 
   &__item {
-    font-size: 14px;
     transition: opacity .3s;
 
     &:hover {
