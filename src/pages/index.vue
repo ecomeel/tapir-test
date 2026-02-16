@@ -28,6 +28,8 @@ import { TextButton } from '~/shared/ui/TextButton';
   }
 
   @media (max-width: 767px) {
+    padding: 20px 0;
+
     &__title {
       font-size: 26px;
       max-width: 220px;

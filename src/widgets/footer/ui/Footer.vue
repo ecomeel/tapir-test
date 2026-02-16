@@ -49,5 +49,15 @@ import navigation from '../model/navigation';
   > * {
     flex: 1;
   }
+
+  @media (max-width: 767px) {
+    padding: 60px 20px;
+    flex-direction: column;
+    gap: 60px;
+
+    &__chapter {
+      max-width: 220px;
+    }
+  }
 }
 </style>
