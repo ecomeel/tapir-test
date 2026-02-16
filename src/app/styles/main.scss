@@ -11,12 +11,13 @@ body {
   background-color: $color-white;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.3em;
+  line-height: 1.4em;
 }
 
-h1, h2, h3, h4, h5, h6, ul, li, button {
+h1, h2, h3, h4, h5, h6, ul, li, button, p {
   margin: 0;
   padding: 0;
+  font-weight: 400;
 }
 
 ul, li {

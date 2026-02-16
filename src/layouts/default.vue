@@ -20,7 +20,18 @@ import { Footer } from '~/widgets/footer';
   min-height: 100vh;
 
   &__content {
+    padding-left: 60px;
+    padding-right: 60px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 767px) {
+    &__content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 }
 </style>
