@@ -10,14 +10,21 @@ body {
   color: $color-black;
   background-color: $color-white;
   font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3em;
 
   @media (max-width: 768) {
     font-size: 12px;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, ul, li, button {
   margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
 }
 
 * {
@@ -38,4 +45,9 @@ a {
 .page-leave-to {
   opacity: 0;
   transform: translateY(6px);
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }

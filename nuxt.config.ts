@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: "src/",
   modules: ["@pinia/nuxt"],
@@ -16,6 +15,15 @@ export default defineNuxtConfig({
       ]
     },
     pageTransition: { name: "page", mode: "out-in" },
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/shared/config/styles" as *;'
+        }
+      }
+    }
   },
   devtools: { enabled: false }
 })
