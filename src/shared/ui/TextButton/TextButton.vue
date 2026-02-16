@@ -1,33 +1,44 @@
+<template>
+  <NuxtLink
+    v-if="props.to"
+    :to="props.to"
+    :class="buttonClasses"
+  >
+    {{ props.label }}
+  </NuxtLink>
+
+  <a
+    v-else-if="props.href"
+    :href="props.href"
+    :class="buttonClasses"
+  >
+    {{ props.label }}
+  </a>
+
+  <button
+    v-else
+    type="button"
+    :class="buttonClasses"
+  >
+    {{ props.label }}
+  </button>
+</template>
+
 <script setup lang="ts">
+import type { TextButtonProps } from './types'
 import { computed } from 'vue'
-import { type TextButtonProps } from './types'
 
 const props = withDefaults(defineProps<TextButtonProps>(), {
   colorToken: 'transparent',
   bordered: false,
 })
 
-const componentTag = computed(() => {
-  if (props.to) return 'NuxtLink'
-  if (props.href) return 'a'
-  return 'button'
-})
+const buttonClasses = computed(() => [
+  'button',
+  `button_${props.colorToken}`,
+  { 'button_bordered': props.bordered }
+])
 </script>
-
-<template>
-  <component
-    :is="componentTag"
-    :to="to"
-    :href="href"
-    :class="[
-      'button',
-      `button_${colorToken}`,
-      { 'button_bordered': bordered }
-    ]"
-  >
-    {{ label }}
-  </component>
-</template>
 
 <style lang="scss" scoped>
 .button {

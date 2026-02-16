@@ -4,7 +4,7 @@
   <TextButton 
     color-token="red"
     label="В каталог"
-    to="some"
+    to="/catalog"
   />
 </div>
 </template>
