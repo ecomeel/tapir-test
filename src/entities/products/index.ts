@@ -1,4 +1,4 @@
-import { type Product } from "./model/types";
+import { type Product, type GetProductsRequest } from "./model/types";
 import { getProducts } from "./model/api";
 
-export { type Product, getProducts }
+export { type Product, type GetProductsRequest, getProducts };

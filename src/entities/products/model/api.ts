@@ -1,9 +1,9 @@
 import { request } from "~/shared/api/api";
 import { PRODUCTS } from "~/shared/api/endpoints";
-import type { getProductsRequest } from "./types";
+import type { GetProductsRequest } from "./types";
 
 export async function getProducts(page?: number, limit?: number) {
-  return request<getProductsRequest>(PRODUCTS, {
+  return request<GetProductsRequest>(PRODUCTS, {
     params: { page, limit }
   })
 }

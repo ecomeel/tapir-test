@@ -2,57 +2,37 @@
 <div class="content">
   <h1 class="content__title">Каталог</h1>
 
-  <ProductsList :products="data?.products ?? []" />
+  <ProductsList :products="productStore.renderedItems" />
 
-  <!-- Отображать если не последняя страница -->
-   <!-- Вынести кнопку в features -->
-  <div class="load-action">
-    <p v-show="error" class="load-action__error">
-      Произошла ошибка, попробуйте позже
-    </p>
-    <TextButton
-      v-bind="loadButtonSettings"
-    />
-  </div>
+  <LoadMore 
+    v-show="productStore.hasMore"
+    :pending="productStore.pending"
+    :error="productStore.error"
+    @click="() => loadMore(PRODUCTS_LIMIT_PER_REQUEST)"
+  />
 </div>
 </template>
 
 <script setup lang="ts">
 import { ProductsList } from '~/widgets/products';
 import { getProducts } from '~/entities/products';
-import { useBreakpoint } from '~/shared/lib/useBreakpoints';
-import TextButton from '~/shared/ui/TextButton/TextButton.vue';
+import { LoadMore } from '~/features/load-more';
+import { useProductsStore } from '~/entities/products/model/store';
+import { useLoadMoreProducts } from '~/features/load-more-products/lib/useLoadMoreProducts';
 
-// Селать рендер нужных товаров
+const productStore = useProductsStore();
+const { loadMore} = useLoadMoreProducts();
 
-const { isMobile } = useBreakpoint();
+const PRODUCTS_LIMIT_PER_REQUEST = 16;
 
-const MOBILE_ITEMS_PER_REQUEST = 6;
-const DESKTOP_ITEMS_PER_REQUEST = 16;
-
-const productsPage = ref(1);
-
-const itemsLimit = computed(
-  () => isMobile.value ?
-  MOBILE_ITEMS_PER_REQUEST :
-  DESKTOP_ITEMS_PER_REQUEST
+const { data } = await useAsyncData(
+  'products-initial',
+  () => getProducts(1, PRODUCTS_LIMIT_PER_REQUEST)
 );
 
-const { data, pending, error, refresh } = useAsyncData(
-  'products',
-  () => getProducts(productsPage.value, itemsLimit.value)
-);
-
-
-watch([productsPage, itemsLimit], () => {
-  refresh();
-})
-
-const loadButtonSettings = computed(() => ({
-  label: pending.value ? "Загрузка..." : error.value ? "Повторить" : "Показать еще",
-  bordered: !pending.value,
-  disabled: pending.value
-}))
+if (data.value && !productStore.renderedItems.length) {
+  productStore.setInitial(data.value)
+}
 
 </script>
 
@@ -71,14 +51,4 @@ const loadButtonSettings = computed(() => ({
   }
 }
 
-.load-action {
-  margin-top: 110px;
-  display: flex;
-  justify-content: center;
-
-  &__error {
-    padding: 10px 24px;
-    margin-bottom: 20px;
-  }
-}
 </style>

@@ -5,7 +5,7 @@ export interface Product {
   price: number;
 }
 
-export interface getProductsRequest {
+export interface GetProductsRequest {
   currentPage: number;
   limit: number;
   total: number;
