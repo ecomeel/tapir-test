@@ -43,5 +43,9 @@ const loadButtonSettings = computed(() => ({
     padding: 10px 24px;
     margin-bottom: 20px;
   }
+
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
 }
 </style>

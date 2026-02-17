@@ -28,10 +28,16 @@ const singleItemPrice = Math.floor(props.product.price / 2);
 <style lang="scss" scoped>
 .card {
   position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
 
   &__img-wrapper {
     height: 180px;
-    
+
     > img {
       width: 100%;
       height: 100%;
@@ -83,6 +89,43 @@ const singleItemPrice = Math.floor(props.product.price / 2);
       object-fit: contain;
       width: 100%;
       height: 100%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__img-wrapper {
+      height: 120px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    width: 150px;
+
+    &__img-wrapper {
+      height: 95px;
+    }
+
+    &__price {
+      margin-top: 15px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 9px;
+
+      > *:first-child {
+        line-height: .8em;
+      }
+    }
+
+    &__name {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    width: 100%;
+
+    &__img-wrapper {
+      height: 130px;
     }
   }
 }

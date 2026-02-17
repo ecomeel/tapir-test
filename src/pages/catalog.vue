@@ -49,6 +49,16 @@ if (data.value && !productStore.renderedItems.length) {
     font-weight: 500;
     text-transform: uppercase;
   }
+
+  @media (max-width: 767px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    &__title {
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+  }
 }
 
 </style>
