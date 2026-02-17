@@ -18,8 +18,8 @@ import { TextButton } from '~/shared/ui/TextButton';
   display: flex;
   flex-direction: column;
   gap: 40px;
-  flex: 1;
   justify-content: center;
+  height: calc(100vh - 80px);
 
   &__title {
     font-size: 64px;
@@ -30,10 +30,13 @@ import { TextButton } from '~/shared/ui/TextButton';
 
   @media (max-width: 767px) {
     padding: 20px 0;
+    height: calc(100vh - 60px);
+    align-items: center;
 
     &__title {
       font-size: 26px;
       max-width: 220px;
+      text-align: center;
     }
   }
 }
